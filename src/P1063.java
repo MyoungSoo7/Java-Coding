@@ -1,65 +1,65 @@
 import java.io.*;
 import java.util.*;
 
-class Unit {
-    int x, y;
+public class P1063 {
+    static class Chess {
+        static Map<String, int[]> moveSet;
 
-    public Unit(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-}
+        Unit king, stone;
 
-class Chess {
-    static Map<String, int[]> moveSet;
+        public Chess(int kx, int ky, int sx, int sy) {
+            king = new Unit(kx, ky);
+            stone = new Unit(sx, sy);
 
-    Unit king, stone;
-
-    public Chess(int kx, int ky, int sx, int sy) {
-        king = new Unit(kx, ky);
-        stone = new Unit(sx, sy);
-
-        moveSet = new HashMap<>();
-        moveSet.put("R", new int[]{0, 1});
-        moveSet.put("L", new int[]{0, -1});
-        moveSet.put("B", new int[]{-1, 0});
-        moveSet.put("T", new int[]{1, 0});
-        moveSet.put("RT", new int[]{1, 1});
-        moveSet.put("LT", new int[]{1, -1});
-        moveSet.put("RB", new int[]{-1, 1});
-        moveSet.put("LB", new int[]{-1, -1});
-    }
-
-    void move(String m) {
-        int[] move = moveSet.get(m);
-        int kx = king.x + move[0];
-        int ky = king.y + move[1];
-        int sx = stone.x + move[0];
-        int sy = stone.y + move[1];
-        boolean moveStone = false;
-        if (stone.x == kx && stone.y == ky) {
-            moveStone = true;
+            moveSet = new HashMap<>();
+            moveSet.put("R", new int[]{0, 1});
+            moveSet.put("L", new int[]{0, -1});
+            moveSet.put("B", new int[]{-1, 0});
+            moveSet.put("T", new int[]{1, 0});
+            moveSet.put("RT", new int[]{1, 1});
+            moveSet.put("LT", new int[]{1, -1});
+            moveSet.put("RB", new int[]{-1, 1});
+            moveSet.put("LB", new int[]{-1, -1});
         }
 
-        if ((0 <= kx && kx < 8 && 0 <= ky && ky < 8) && (!moveStone || 0 <= sx && sx < 8 && 0 <= sy && sy < 8)) {
-            king.x = kx;
-            king.y = ky;
-            if (moveStone) {
-                stone.x = sx;
-                stone.y = sy;
+        void move(String m) {
+            int[] move = moveSet.get(m);
+            int kx = king.x + move[0];
+            int ky = king.y + move[1];
+            int sx = stone.x + move[0];
+            int sy = stone.y + move[1];
+            boolean moveStone = false;
+            if (stone.x == kx && stone.y == ky) {
+                moveStone = true;
+            }
+
+            if ((0 <= kx && kx < 8 && 0 <= ky && ky < 8) && (!moveStone || 0 <= sx && sx < 8 && 0 <= sy && sy < 8)) {
+                king.x = kx;
+                king.y = ky;
+                if (moveStone) {
+                    stone.x = sx;
+                    stone.y = sy;
+                }
             }
         }
+
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder();
+            sb.append((char) (king.y + 'A')).append(king.x + 1).append("\n").append((char) (stone.y + 'A')).append(stone.x + 1);
+            return sb.toString();
+        }
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append((char) (king.y + 'A')).append(king.x + 1).append("\n").append((char) (stone.y + 'A')).append(stone.x + 1);
-        return sb.toString();
-    }
-}
+    static class Unit {
+        int x, y;
 
-public class P1063 {
+        public Unit(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] input = br.readLine().split(" ");

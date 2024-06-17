@@ -1,35 +1,40 @@
-import java.io.*;
-import java.util.*;
-
-class Bag implements Comparable<Bag> {
-    int maxWeight;
-
-    public Bag(int maxWeight) {
-        this.maxWeight = maxWeight;
-    }
-
-    @Override
-    public int compareTo(Bag bag) {
-        return Integer.compare(this.maxWeight, bag.maxWeight);
-    }
-}
-
-class Gem implements Comparable<Gem> {
-    int weight;
-    int value;
-
-    public Gem(int weight, int value) {
-        this.weight = weight;
-        this.value = value;
-    }
-
-    @Override
-    public int compareTo(Gem gem) {
-        return Integer.compare(this.weight, gem.weight);
-    }
-}
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+import java.util.StringTokenizer;
 
 public class P1202 {
+    static class Bag implements Comparable<Bag> {
+        int maxWeight;
+
+        public Bag(int maxWeight) {
+            this.maxWeight = maxWeight;
+        }
+
+        @Override
+        public int compareTo(Bag bag) {
+            return Integer.compare(this.maxWeight, bag.maxWeight);
+        }
+    }
+
+    static class Gem implements Comparable<Gem> {
+        int weight;
+        int value;
+
+        public Gem(int weight, int value) {
+            this.weight = weight;
+            this.value = value;
+        }
+
+        @Override
+        public int compareTo(Gem gem) {
+            return Integer.compare(this.weight, gem.weight);
+        }
+    }
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());

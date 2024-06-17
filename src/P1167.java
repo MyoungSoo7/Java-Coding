@@ -1,17 +1,17 @@
 import java.io.*;
 import java.util.*;
 
-class Vertex {
-    int v;
-    int weight;
-
-    public Vertex(int v, int weight) {
-        this.v = v;
-        this.weight = weight;
-    }
-}
-
 public class P1167 {
+    static class Vertex {
+        int v;
+        int weight;
+
+        public Vertex(int v, int weight) {
+            this.v = v;
+            this.weight = weight;
+        }
+    }
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int V = Integer.parseInt(br.readLine());

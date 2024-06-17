@@ -1,9 +1,8 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Random;
 
-public class Test {
+public class GenerateTestcase {
     public static void main(String[] args) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter("test.txt"));
 

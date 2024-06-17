@@ -1,23 +1,23 @@
 import java.io.*;
 import java.util.*;
 
-class Bus implements Comparable<Bus> {
-    int end;
-    int cost;
-
-    public Bus(int end, int cost) {
-        this.end = end;
-        this.cost = cost;
-    }
-
-    @Override
-    public int compareTo(Bus bus) {
-        return Integer.compare(this.cost, bus.cost);
-    }
-}
-
 public class P1916 {
     static List<List<Bus>> buses = new ArrayList<>();
+
+    static class Bus implements Comparable<Bus> {
+        int end;
+        int cost;
+
+        public Bus(int end, int cost) {
+            this.end = end;
+            this.cost = cost;
+        }
+
+        @Override
+        public int compareTo(Bus bus) {
+            return Integer.compare(this.cost, bus.cost);
+        }
+    }
 
     static void dijkstra(int[] costs, int start) {
         PriorityQueue<Bus> queue = new PriorityQueue<>();

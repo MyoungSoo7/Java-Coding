@@ -1,25 +1,25 @@
 import java.io.*;
 import java.util.*;
 
-class Person {
-    int[] pos;
-    int beer;
-
-    public Person(int[] pos) {
-        this.pos = pos;
-        this.beer = 20;
-    }
-
-    Person moveTo(int[] destination) {
-        int distance = Math.abs(pos[0] - destination[0]) + Math.abs(pos[1] - destination[1]);
-        if (beer * 50 < distance) {
-            return null;
-        }
-        return new Person(destination);
-    }
-}
-
 public class P9205 {
+    static class Person {
+        int[] pos;
+        int beer;
+
+        public Person(int[] pos) {
+            this.pos = pos;
+            this.beer = 20;
+        }
+
+        Person moveTo(int[] destination) {
+            int distance = Math.abs(pos[0] - destination[0]) + Math.abs(pos[1] - destination[1]);
+            if (beer * 50 < distance) {
+                return null;
+            }
+            return new Person(destination);
+        }
+    }
+
     static String go(int[] house, int[][] stores, int[] destination) {
         int len = stores.length;
         Queue<Person> queue = new LinkedList<>();
